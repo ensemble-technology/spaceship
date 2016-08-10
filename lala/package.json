@@ -1,0 +1,17 @@
+{
+  "name": "lala",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aframe": "^0.2.0"
+  },
+  "devDependencies": {
+    "aframe-mouse-cursor-component": "^0.2.1"
+  }
+}
