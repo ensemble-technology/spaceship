@@ -9,23 +9,6 @@
     <script src="./node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="./node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
     <script src="./node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
-    <script type="text/javascript">
-    AFRAME.registerComponent("square", {
-    	dependencies: ["draw"],
-    	init: function() {
-    		this.draw = this.el.components.draw;
-    		this.draw.register(this.render.bind(this));
-    	},
-    	update: function () {
-    		this.draw.render();
-    	},
-    	render: function () {
-    		var ctx = this.draw.ctx;
-    		ctx.fillStyle = this.data.color;
-    		ctx.fillRect(68, 68, 120, 120);
-    	}
-    });
-    </script>
   </head>
   <body>
     <!-- <div style="width: 70%; position: absolute; bottom: 0; z-index: 999; left: 50%; transform: translateX(-50%);">
@@ -39,19 +22,38 @@
         <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor>
       </a-camera>
 
-      <a-entity>
-        <a-plane class="plane-button" id="plane-11" color="#666666" height="1" width="2" position="-4.5 0 -5"></a-plane>
-        <a-plane class="plane-button" color="#007aff" height="1" width="2" position="-1.5 0 -5"></a-plane>
-        <a-plane class="plane-button" color="#00ff7a" height="1" width="2" position="1.5 0 -5"></a-plane>
-        <a-plane class="plane-button" color="#7aff00" height="1" width="2" position="4.5 0 -5"></a-plane>
+      <a-entity rotation="-45 0 0" scale="0.2 0.2 1" position="0 -0.5 -1">
+        <a-box class="plane-button" color="#666666" depth="0.01" height="0.8" width="2" position="-4.5 3 0" dtext="Primeiramente"
+          draw="background: #666666"
+          textwrap="textAlign: center; x: 128; y: 128; text: GOVERNANCE AND STANDARDS"
+        ></a-box>
+        <a-box class="plane-button" color="#007aff" depth="0.01" height="0.8" width="2" position="-1.5 3 0" dtext="Segundamente"
+          draw="background: #007aff"
+          textwrap="textAlign: center; x: 128; y: 128; text: LEARNING. LEADERSHIP & CULTURE"
+        ></a-box>
+        <a-box class="plane-button" color="#00ff7a" depth="0.01" height="0.8" width="2" position="1.5 3 0" dtext="Terceiramente"
+          draw="background: #00ff7a"
+          textwrap="textAlign: center; x: 128; y: 128; text: PANNING, SCHEDULING AND PROCESS MANAGEMENT"
+        ></a-box>
+        <a-box class="plane-button" color="#7aff00" depth="0.01" height="0.8" width="2" position="4.5 3 0" dtext="Quartamente"
+          draw="background: #7aff00"
+          textwrap="textAlign: center; x: 128; y: 128; text: WAYS OF WORKING"
+        ></a-box>
+
+        <a-box class="plane-button" color="#666666" depth="0.01" height="0.8" width="2" position="-4.5 1.5 0" dtext="Primeiramente"></a-box>
+        <a-box class="plane-button" color="#007aff" depth="0.01" height="0.8" width="2" position="-1.5 1.5 0" dtext="Segundamente"></a-box>
+        <a-box class="plane-button" color="#00ff7a" depth="0.01" height="0.8" width="2" position="1.5 1.5 0" dtext="Terceiramente"></a-box>
+        <a-box class="plane-button" color="#7aff00" depth="0.01" height="0.8" width="2" position="4.5 1.5 0" dtext="Quartamente"></a-box>
+
+        <a-box class="plane-button" color="#666666" depth="0.01" height="0.8" width="2" position="-4.5 0 0" dtext="Primeiramente"></a-box>
+        <a-box class="plane-button" color="#007aff" depth="0.01" height="0.8" width="2" position="-1.5 0 0" dtext="Segundamente"></a-box>
+        <a-box class="plane-button" color="#00ff7a" depth="0.01" height="0.8" width="2" position="1.5 0 0" dtext="Terceiramente"></a-box>
+        <a-box class="plane-button" color="#7aff00" depth="0.01" height="0.8" width="2" position="4.5 0 0" dtext="Quartamente"></a-box>
       </a-entity>
 
-
-      <a-entity position="0 3 -5">
-        <a-plane id="plane-content" color="#007aff" height="3" width="5"></a-plane>
+      <a-entity position="0 1 -2" scale="0.5 0.5 1">
+        <a-box id="plane-content" color="#007aff" depth="0.1" height="3" width="5" draw="background: #e0e0e0" textwrap="textAlign: center; x: 128; y: 128; text: Hallow"></a-box>
       </a-entity>
-
-      <!-- <a-entity position="0 1 0" geometry="primitive: box" color="00ff99" draw="width: 256; height: 256" square="text: Hello"></a-entity> -->
 
       <!-- <a-entity position="-5 -2.5 -10">
         <a-box color="#007aff" width="4" height="5" depth="2"></a-box>
@@ -81,21 +83,25 @@
     </a-scene>
 
     <script type="text/javascript">
-    // var AFRAME = require("aframe-core");
-    // var draw = require("aframe-draw-component").component;
-    // var textwrap = require("aframe-textwrap-component").component;
-    // AFRAME.registerComponent("draw", draw);
-    // AFRAME.registerComponent("textwrap", textwrap);
-    (function() {
-      function updateSite(event) {
-          window.location.reload();
+    AFRAME.registerSystem('my-component', {
+
+    });
+    AFRAME.registerComponent('my-component', {
+      init: function () {
+        console.log(this.system);
       }
-      window.applicationCache.addEventListener('updateready', updateSite, false);
+    });
+    (function() {
+      function generateTextWrapAttribute(string) {
+        return "textAlign: center; x: 128; y: 128; text: " + string
+      }
+
       var planeButtons = document.getElementsByClassName('plane-button');
       for (var i = 0; i < planeButtons.length; i++) {
         planeButtons[i].addEventListener('click', function() {
           var planeContent = document.querySelector('#plane-content');
-          planeContent.setAttribute('color', this.attributes.color.firstChild.textContent);
+          planeContent.setAttribute('draw', "background: " + this.attributes.color.firstChild.textContent);
+          planeContent.setAttribute('textwrap', generateTextWrapAttribute(this.attributes.dtext.firstChild.textContent));
         });
       }
     })();
