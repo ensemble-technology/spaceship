@@ -9,8 +9,11 @@
     <script src="./node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
   </head>
   <body>
-    <div style="width: 70%; position: absolute; bottom: 0; z-index: 999; left: 50%; transform: translateX(-50%);">
+    <!-- <div style="width: 70%; position: absolute; bottom: 0; z-index: 999; left: 50%; transform: translateX(-50%);">
       <img src="./painel.png" alt="" style="width: 100%;"/>
+    </div> -->
+    <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 999; background-color: rgba(0,0,0,0.5)">
+
     </div>
     <a-scene>
       <a-camera position="0 2 4">
@@ -19,20 +22,20 @@
 
       <a-entity position="-5 -2.5 -10">
         <a-box color="#007aff" width="4" height="5" depth="2"></a-box>
-        <!-- <a-animation attribute="scale"
+        <a-animation attribute="scale"
                dur="3000"
                fill="forwards"
                from="1 0.1 1"
                to="1 3 1"
-               repeat="indefinite"
+
                easing="linear"></a-animation>
          <a-animation attribute="position"
                 dur="3000"
                 fill="forwards"
                 from="-5 -4.75 -10"
                 to="-5 2.5 -10"
-                repeat="indefinite"
-                easing="linear"></a-animation> -->
+
+                easing="linear"></a-animation>
       </a-entity>
 
       <a-entity id="middle-box" position="0 0 -10">
