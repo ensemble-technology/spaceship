@@ -5,55 +5,151 @@
     <title>Anime UI</title>
     <!-- <meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui"> -->
     <meta name="description" content="Anime UI — A-Frame">
-    <script src="./node_modules/aframe/dist/aframe.min.js"></script>
-    <script src="./node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
-    <script src="./node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
-    <script src="./node_modules/aframe-text-component/dist/aframe-text-component.min.js"></script>
+    <script src="node_modules/aframe/dist/aframe.min.js"></script>
+    <script src="node_modules/aframe-event-set-component/dist/aframe-event-set-component.js"></script>
+    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
+    <script src="node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
+    <script src="node_modules/aframe-text-component/dist/aframe-text-component.min.js"></script>
+    <script src="node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <img id="panel" src="VMOPanel.png">
+      </a-assets>
+
       <a-camera position="0 0 0">
         <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor>
+        <!-- <a-entity cursor="fuse: true; timeout: 500"
+          position="0 0 -1"
+          geometry="primitive: ring"
+          material="color: black; shader: flat">
+          <a-animation begin="click" easing="ease-in" attribute="scale"
+                       fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+          <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                       fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+        </a-entity> -->
       </a-camera>
 
       <!-- Left wall  -->
-      <a-plane
+      <!-- <a-plane
       color="#aaffee"
       height="0.7" width="3"
       position="-1.5 0.35 0"
       rotation="0 90 0"
-      ></a-plane>
+      ></a-plane> -->
 
       <!-- Right wall  -->
-      <a-plane
+      <!-- <a-plane
       color="#aaffee"
       height="0.7" width="3"
       position="1.5 0.35 0"
       rotation="0 -90 0"
-      ></a-plane>
+      ></a-plane> -->
 
       <!-- Back wall  -->
-      <a-plane
+      <!-- <a-plane
       color="#aaffee"
       height="1.5" width="3"
       position="0 0.75 1.5"
       rotation="0 180 0"
-      ></a-plane>
+      ></a-plane> -->
 
       <!-- Front mirror  -->
-      <a-plane
+      <!-- <a-plane
       color="#ffaaee"
       height="3" width="3"
       position="0 2.25 -0.5"
       rotation="60 0 0"
-      ></a-plane>
+      ></a-plane> -->
 
       <!--  -->
-      <a-entity id="retry" geometry="primitive: plane; width: 1" position="0 0 -0.5" rotation="0 0 0" material="shader: flat; side: double;  transparent: true; color:red" text="text:SPACESHIP;size:0.1;"></a-entity>
 
-      <a-sky color="#000000"></a-sky>
+      <a-entity id="plane-content" geometry="primitive:plane;width:5;height:3;" material="shader:html;target:#emoji;transparent:false;ratio:height;fps:0.3;side:double;" position="0 4 -3.5" rotation="10 0 0"></a-entity>
+
+      <a-entity position="0 0 5">
+        <a-curvedimage src="#panel" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0"></a-curvedimage>
+      </a-entity>
+
+      <a-plane
+      class="plane-button"
+      data-text="Segundamente"
+      color="#007aff"
+      height="0.7" width="2"
+      position="-3.1 0.5 -4.1"
+      rotation="0 35 20"
+      opacity="0"
+      ></a-plane>
+
+      <a-plane
+      class="plane-button"
+      data-text="Segundamente"
+      color="#08fa34"
+      height="0.7" width="2.1"
+      position="-0.9 0.9 -4.6"
+      rotation="0 0 6"
+      opacity="0"
+      ></a-plane>
+
+      <a-plane
+      class="plane-button"
+      data-text="Terceiramente"
+      color="#007aff"
+      height="0.7" width="2.1"
+      position="1.45 0.9 -4.6"
+      rotation="0 0 -6"
+      opacity="0"
+      ></a-plane>
+
+      <a-plane
+      class="plane-button"
+      data-text="Quartamente"
+      color="#08fa34"
+      height="0.7" width="2.1"
+      position="3.5 0.5 -4.1"
+      rotation="0 -35 -20"
+      opacity="0"
+      ></a-plane>
+
+      <!-- <a-entity id="emojiEntity" geometry="primitive:box;width:1;height:1;depth:1;" rotation="0 0 0" position="0 0 0" material="shader:html;target:#targe;transparent:false;ratio:height;fps:0.3;side:double;"></a-entity> -->
+
+      <!-- letters -->
+      <!-- <a-entity id="lettersEntity" geometry="primitive:plane;width:2;height:2;" rotation="-30 -30 0" position="-0.2 1.5 2.5" material="shader:html;target:#target;transparent:true;ratio:width;fps:1.5;"></a-entity> -->
+
+      <div id="htmlTarget" class="hide">
+        <span id="emoji">〠</span>
+        <div id="target">
+          <h1>HELLO<span>★</span></h1>
+          <span id="pre">A</span>
+        </div>
+      </div>
+
+      <a-sky color="#e0e0e0"></a-sky>
     </a-scene>
     <script type="text/javascript">
+      (function() {
+        function generateTextWrapAttribute(string) {
+          return "textAlign: center; x: 128; y: 128; text: " + string
+        }
+
+        var planeButtons = document.getElementsByClassName('plane-button');
+        for (var i = 0; i < planeButtons.length; i++) {
+          planeButtons[i].addEventListener('click', function() {
+            var planeContent = document.querySelector('#plane-content');
+            // planeContent.setAttribute('draw', "background: " + this.attributes.color.firstChild.textContent);
+            planeContent.setAttribute('textwrap', generateTextWrapAttribute(this.dataset.text));
+          });
+
+          planeButtons[i].addEventListener('mouseenter', function() {
+            this.setAttribute('opacity', '0.3');
+          });
+
+          planeButtons[i].addEventListener('mouseleave', function() {
+            this.setAttribute('opacity', '0');
+          });
+        }
+      })();
     </script>
   </body>
 </html>

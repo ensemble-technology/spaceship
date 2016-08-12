@@ -14,6 +14,7 @@
     "aframe-textwrap-component": "^1.0.1"
   },
   "devDependencies": {
+    "aframe-event-set-component": "^3.0.1",
     "aframe-html-shader": "^0.1.1",
     "aframe-mouse-cursor-component": "^0.2.1",
     "aframe-text-component": "^0.3.0"

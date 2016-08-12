@@ -5,17 +5,20 @@
     <title>Anime UI</title>
     <!-- <meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui"> -->
     <meta name="description" content="Anime UI — A-Frame">
-    <script src="./node_modules/aframe/dist/aframe.min.js"></script>
-    <script src="./node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
-    <script src="./node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
-    <script src="./node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
+    <script src="node_modules/aframe/dist/aframe.min.js"></script>
+    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
+    <script src="node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
+    <script src="node_modules/aframe-html-shader/dist/aframe-html-shader.min.js"></script>
   </head>
   <body>
     <!-- <div style="width: 70%; position: absolute; bottom: 0; z-index: 999; left: 50%; transform: translateX(-50%);">
       <img src="./painel.png" alt="" style="width: 100%;"/>
     </div> -->
     <!-- <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 999; background-color: rgba(0,0,0,0.5)">
-
+    <a-scene>
+        <a-entity geometry="primitive:box;" material="shader:gif;src:url(nyancat.gif);color:green;opacity:.8"></a-entity>
+      </a-scene>
     </div> -->
     <a-scene>
       <a-camera position="0 0 0">
@@ -23,7 +26,7 @@
       </a-camera>
 
       <a-entity rotation="-45 0 0" scale="0.2 0.2 1" position="0 -0.5 -1">
-        <a-box class="plane-button" color="#666666" depth="0.01" height="0.8" width="2" position="-4.5 3 0" dtext="Primeiramente"
+        <a-box class="plane-button" color="#666666" depth="0.01" height="0.8" width="2" position="-4.5 3 0" data-text="Primeiramente"
           draw="background: #666666"
           textwrap="textAlign: center; x: 128; y: 128; text: GOVERNANCE AND STANDARDS"
         ></a-box>
