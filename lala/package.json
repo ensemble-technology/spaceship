@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "aframe-html-shader": "^0.1.1",
-    "aframe-mouse-cursor-component": "^0.2.1"
+    "aframe-mouse-cursor-component": "^0.2.1",
+    "aframe-text-component": "^0.3.0"
   }
 }

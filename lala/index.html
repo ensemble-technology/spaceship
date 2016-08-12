@@ -51,9 +51,15 @@
         <a-box class="plane-button" color="#7aff00" depth="0.01" height="0.8" width="2" position="4.5 0 0" dtext="Quartamente"></a-box>
       </a-entity>
 
-      <a-entity position="0 1 -2" scale="0.5 0.5 1">
+      <!-- <a-entity position="0 1 -2" scale="0.5 0.5 1">
         <a-box id="plane-content" color="#007aff" depth="0.1" height="3" width="5" draw="background: #e0e0e0" textwrap="textAlign: center; x: 128; y: 128; text: Hallow"></a-box>
+      </a-entity> -->
+
+      <a-entity position="0 1 -2" scale="0.5 0.5 1">
+        <a-box id="plane-content" color="#007aff" depth="0.1" height="3" width="5" opacity="0.5"></a-box>
       </a-entity>
+
+      <a-sphere radius="7" position="0 1 -2" opacity="0.2" material="side: double; color: #aaffaa;"></a-sphere>
 
       <!-- <a-entity position="-5 -2.5 -10">
         <a-box color="#007aff" width="4" height="5" depth="2"></a-box>
@@ -79,7 +85,7 @@
 
       <!-- <a-box color="#6173F4" width="4" height="10" depth="2" position="5 0 -10"></a-box> -->
 
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky color="#000000"></a-sky>
     </a-scene>
 
     <script type="text/javascript">
@@ -88,6 +94,7 @@
     });
     AFRAME.registerComponent('my-component', {
       init: function () {
+        console.log("system");
         console.log(this.system);
       }
     });

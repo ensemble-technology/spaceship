@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+  <head>
+    <meta charset="utf-8">
+    <title>Anime UI</title>
+    <!-- <meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui"> -->
+    <meta name="description" content="Anime UI — A-Frame">
+    <script src="./node_modules/aframe/dist/aframe.min.js"></script>
+    <script src="./node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="./node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
+    <script src="./node_modules/aframe-text-component/dist/aframe-text-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera position="0 0 0">
+        <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor>
+      </a-camera>
+
+      <!-- Left wall  -->
+      <a-plane
+      color="#aaffee"
+      height="0.7" width="3"
+      position="-1.5 0.35 0"
+      rotation="0 90 0"
+      ></a-plane>
+
+      <!-- Right wall  -->
+      <a-plane
+      color="#aaffee"
+      height="0.7" width="3"
+      position="1.5 0.35 0"
+      rotation="0 -90 0"
+      ></a-plane>
+
+      <!-- Back wall  -->
+      <a-plane
+      color="#aaffee"
+      height="1.5" width="3"
+      position="0 0.75 1.5"
+      rotation="0 180 0"
+      ></a-plane>
+
+      <!-- Front mirror  -->
+      <a-plane
+      color="#ffaaee"
+      height="3" width="3"
+      position="0 2.25 -0.5"
+      rotation="60 0 0"
+      ></a-plane>
+
+      <!--  -->
+      <a-entity id="retry" geometry="primitive: plane; width: 1" position="0 0 -0.5" rotation="0 0 0" material="shader: flat; side: double;  transparent: true; color:red" text="text:SPACESHIP;size:0.1;"></a-entity>
+
+      <a-sky color="#000000"></a-sky>
+    </a-scene>
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>
