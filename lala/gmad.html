@@ -16,20 +16,61 @@
   <body>
     <a-scene>
       <a-assets>
-        <img id="panel" src="VMOPanel.png">
+        <img id="panel-base" src="assets/panel/panel-base.png">
+
+        <!-- Buttons Stand by -->
+        <img id="standby-1-1" src="assets/panel/standby/1-1.png">
+        <img id="standby-1-2" src="assets/panel/standby/1-2.png">
+        <img id="standby-2-1" src="assets/panel/standby/2-1.png">
+        <img id="standby-2-2" src="assets/panel/standby/2-2.png">
+        <img id="standby-2-3" src="assets/panel/standby/2-3.png">
+        <img id="standby-2-4" src="assets/panel/standby/2-4.png">
+        <img id="standby-3-1" src="assets/panel/standby/3-1.png">
+        <img id="standby-3-2" src="assets/panel/standby/3-2.png">
+        <img id="standby-3-3" src="assets/panel/standby/3-3.png">
+        <img id="standby-3-4" src="assets/panel/standby/3-4.png">
+        <!-- Buttons Hover -->
+        <img id="hover-1-1" src="assets/panel/hover/1-1.png">
+        <img id="hover-1-2" src="assets/panel/hover/1-2.png">
+        <img id="hover-2-1" src="assets/panel/hover/2-1.png">
+        <img id="hover-2-2" src="assets/panel/hover/2-2.png">
+        <img id="hover-2-3" src="assets/panel/hover/2-3.png">
+        <img id="hover-2-4" src="assets/panel/hover/2-4.png">
+        <img id="hover-3-1" src="assets/panel/hover/3-1.png">
+        <img id="hover-3-2" src="assets/panel/hover/3-2.png">
+        <img id="hover-3-3" src="assets/panel/hover/3-3.png">
+        <img id="hover-3-4" src="assets/panel/hover/3-4.png">
+
+        <!-- Buttons Selected -->
+        <img id="selected-1-1" src="assets/panel/selected/1-1.png">
+        <img id="selected-1-2" src="assets/panel/selected/1-2.png">
+        <img id="selected-2-1" src="assets/panel/selected/2-1.png">
+        <img id="selected-2-2" src="assets/panel/selected/2-2.png">
+        <img id="selected-2-3" src="assets/panel/selected/2-3.png">
+        <img id="selected-2-4" src="assets/panel/selected/2-4.png">
+        <img id="selected-3-1" src="assets/panel/selected/3-1.png">
+        <img id="selected-3-2" src="assets/panel/selected/3-2.png">
+        <img id="selected-3-3" src="assets/panel/selected/3-3.png">
+        <img id="selected-3-4" src="assets/panel/selected/3-4.png">
+
+        <!--  -->
+        <img id="a-off" src="bgred.png">
+        <img id="a-on" src="bgblue.png">
       </a-assets>
 
       <a-camera position="0 0 0">
-        <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor>
-        <!-- <a-entity cursor="fuse: true; timeout: 500"
+        <!-- <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor> -->
+        <a-entity cursor="fuse: true; timeout: 1000"
           position="0 0 -1"
-          geometry="primitive: ring"
-          material="color: black; shader: flat">
-          <a-animation begin="click" easing="ease-in" attribute="scale"
-                       fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-          <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+          geometry="primitive: ring; radius-inner: 0.03; radius-outer: 0.04;"
+          material="color: black; shader: flat;">
+          <!-- <a-animation begin="click" easing="linear" attribute="scale"
+                       fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation> -->
+          <a-animation begin="fusing" easing="linear" attribute="scale"
+                       fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+          <a-animation begin="cursor-fusing" easing="linear" attribute="scale"
                        fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-        </a-entity> -->
+        </a-entity>
       </a-camera>
 
       <!-- Left wall  -->
@@ -68,11 +109,97 @@
 
       <a-entity id="plane-content" geometry="primitive:plane;width:5;height:3;" material="shader:html;target:#emoji;transparent:false;ratio:height;fps:0.3;side:double;" position="0 4 -3.5" rotation="10 0 0"></a-entity>
 
-      <a-entity position="0 0 5">
-        <a-curvedimage src="#panel" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0"></a-curvedimage>
+      <a-entity position="0 -1 7">
+        <a-curvedimage src="#panel-base" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0"></a-curvedimage>
       </a-entity>
 
-      <a-plane
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-1-1" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-1-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-1-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-1-2" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-1-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-1-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-2-1" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-2-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-2-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-2-2" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-2-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-2-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-2-3" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-2-3" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-2-3" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-2-4" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-2-4" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-2-4" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-3-1" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-3-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-3-1" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-plane
+        class="button-hitbox"
+        color="#007aff"
+        height="0.65" width="1.9"
+        position="-2.9 1 -9.3"
+        rotation="4 20 13"
+        opacity="0"
+        transparent="true"
+        ></a-plane>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-3-2" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-3-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-3-2" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-3-3" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-3-3" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-3-3" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="0 -1 7" toggleable>
+        <a-curvedimage src="#standby-3-4" class="btn-standby" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-curvedimage src="#hover-3-4" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+        <a-curvedimage src="#selected-3-4" class="btn-hover" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+      </a-entity>
+
+
+
+      <!-- <a-entity position="0 0 2" class="toggleable">
+        <a-curvedimage class="on" src="#a-on" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="false"></a-curvedimage>
+        <a-curvedimage class="off" src="#a-off" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="true"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="2 0 2" class="toggleable">
+        <a-curvedimage class="on" src="#a-on" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="false"></a-curvedimage>
+        <a-curvedimage class="off" src="#a-off" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="true"></a-curvedimage>
+      </a-entity>
+
+      <a-entity position="4 0 2" class="toggleable">
+        <a-curvedimage class="on" src="#a-on" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="false"></a-curvedimage>
+        <a-curvedimage class="off" src="#a-off" height="1" width="1" radius="10" theta-length="50" rotation="0 0 0" visible="true"></a-curvedimage>
+      </a-entity> -->
+
+      <!-- <a-plane
       class="plane-button"
       data-text="Segundamente"
       color="#007aff"
@@ -110,7 +237,7 @@
       position="3.5 0.5 -4.1"
       rotation="0 -35 -20"
       opacity="0"
-      ></a-plane>
+      ></a-plane> -->
 
       <!-- <a-entity id="emojiEntity" geometry="primitive:box;width:1;height:1;depth:1;" rotation="0 0 0" position="0 0 0" material="shader:html;target:#targe;transparent:false;ratio:height;fps:0.3;side:double;"></a-entity> -->
 
@@ -133,20 +260,66 @@
           return "textAlign: center; x: 128; y: 128; text: " + string
         }
 
-        var planeButtons = document.getElementsByClassName('plane-button');
-        for (var i = 0; i < planeButtons.length; i++) {
-          planeButtons[i].addEventListener('click', function() {
-            var planeContent = document.querySelector('#plane-content');
-            // planeContent.setAttribute('draw', "background: " + this.attributes.color.firstChild.textContent);
-            planeContent.setAttribute('textwrap', generateTextWrapAttribute(this.dataset.text));
+        // var toggleableOffEntities = document.querySelectorAll('.toggleable .off');
+        // var toggleableOnEntities = document.querySelectorAll('.toggleable .on');
+        //
+        //
+        // for (var i = 0; i < toggleableOffEntities.length; i++) {
+        //   toggleableOffEntities[i].addEventListener('mouseenter', function() {
+        //     this.setAttribute('visible', 'false');
+        //     this.previousElementSibling.setAttribute('visible', 'true');
+        //   });
+        // }
+        //
+        // for (var i = 0; i < toggleableOnEntities.length; i++) {
+        //   toggleableOnEntities[i].addEventListener('mouseleave', function() {
+        //     this.setAttribute('visible', 'false');
+        //     this.nextElementSibling.setAttribute('visible', 'true');
+        //   });
+        // }
+
+        var buttonHitboxes = document.querySelectorAll('[toggleable] .button-hitbox');
+        for (var i = 0; i < buttonHitboxes.length; i++) {
+          buttonHitboxes[i].addEventListener('click', function() {
+            document.querySelector('[toggleable] [src="#selected-1-1"]').setAttribute('visible', 'true') // Selected
+            document.querySelector('[toggleable] [src="#hover-1-1"]').setAttribute('visible', 'false') // Hover
+            document.querySelector('[toggleable] [src="#standby-1-1"]').setAttribute('visible', 'false') // Stand by
+
+            document.querySelector('[toggleable] [src="#selected-2-1"]').setAttribute('visible', 'true') // Selected
+            document.querySelector('[toggleable] [src="#hover-2-1"]').setAttribute('visible', 'false') // Hover
+            document.querySelector('[toggleable] [src="#standby-2-1"]').setAttribute('visible', 'false') // Stand by
+
+            this.previousElementSibling.setAttribute('visible', 'true') // Selected
+            this.previousElementSibling.previousElementSibling.setAttribute('visible', 'false') // Hover
+            this.previousElementSibling.previousElementSibling.previousElementSibling.setAttribute('visible', 'false') // Stand by
           });
 
-          planeButtons[i].addEventListener('mouseenter', function() {
-            this.setAttribute('opacity', '0.3');
+          buttonHitboxes[i].addEventListener('mouseenter', function() {
+            document.querySelector('[toggleable] [src="#selected-1-1"]').setAttribute('visible', 'false') // Selected
+            document.querySelector('[toggleable] [src="#hover-1-1"]').setAttribute('visible', 'true') // Hover
+            document.querySelector('[toggleable] [src="#standby-1-1"]').setAttribute('visible', 'false') // Stand by
+
+            document.querySelector('[toggleable] [src="#selected-2-1"]').setAttribute('visible', 'false') // Selected
+            document.querySelector('[toggleable] [src="#hover-2-1"]').setAttribute('visible', 'true') // Hover
+            document.querySelector('[toggleable] [src="#standby-2-1"]').setAttribute('visible', 'false') // Stand by
+
+            this.previousElementSibling.setAttribute('visible', 'false') // Selected
+            this.previousElementSibling.previousElementSibling.setAttribute('visible', 'true') // Hover
+            this.previousElementSibling.previousElementSibling.previousElementSibling.setAttribute('visible', 'false') // Stand by
           });
 
-          planeButtons[i].addEventListener('mouseleave', function() {
-            this.setAttribute('opacity', '0');
+          buttonHitboxes[i].addEventListener('mouseleave', function() {
+            document.querySelector('[toggleable] [src="#selected-1-1"]').setAttribute('visible', 'false') // Selected
+            document.querySelector('[toggleable] [src="#hover-1-1"]').setAttribute('visible', 'false') // Hover
+            document.querySelector('[toggleable] [src="#standby-1-1"]').setAttribute('visible', 'true') // Stand by
+
+            document.querySelector('[toggleable] [src="#selected-2-1"]').setAttribute('visible', 'false') // Selected
+            document.querySelector('[toggleable] [src="#hover-2-1"]').setAttribute('visible', 'false') // Hover
+            document.querySelector('[toggleable] [src="#standby-2-1"]').setAttribute('visible', 'true') // Stand by
+
+            this.previousElementSibling.setAttribute('visible', 'false') // Selected
+            this.previousElementSibling.previousElementSibling.setAttribute('visible', 'false') // Hover
+            this.previousElementSibling.previousElementSibling.previousElementSibling.setAttribute('visible', 'true') // Stand by
           });
         }
       })();
