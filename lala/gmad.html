@@ -83,6 +83,7 @@
         </a-camera>
 
         <!-- <a-entity id="plane-content" geometry="primitive:plane;width:5;height:3;" material="shader:html;target:#emoji;transparent:false;ratio:height;fps:0.3;side:double;" position="0 4 -3.5" rotation="10 0 0"></a-entity> -->
+        <a-box id="theContent" color="#007aff" position="0 3 -3" depth="0.1" height="3" width="5" draw="background: #e0e0e0" textwrap="textAlign: center; x: 128; y: 128; text: Hallow"></a-box>
 
         <a-entity position="0 -1 7">
             <a-curvedimage src="#panel-dash" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
@@ -233,6 +234,7 @@
             var buttonHitboxes = document.querySelectorAll('[toggleable] .button-hitbox');
             for (var i = 0; i < buttonHitboxes.length; i++) {
                 buttonHitboxes[i].addEventListener('click', function() {
+                    document.querySelector('#theContent').setAttribute('textwrap', generateTextWrapAttribute(this.dataset.loc));
                     if (selectedButton !== undefined) {
                         document.querySelector('[src="#on-' + selectedButton.slice(0, -4) + '"]').setAttribute('visible', 'false'); // Hide active group
                         document.querySelector('[src="#on-' + selectedButton.slice(0, -2) + '"]').setAttribute('visible', 'false'); // Hide active sub-group
