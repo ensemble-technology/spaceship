@@ -323,8 +323,8 @@
 
                     fetch('https://ensemble-technology.github.io/spaceship/lala/txts/' + this.dataset.loc + '.txt')
                     .then(function(response) { return response.text(); })
-                    .then(function(body) { document.querySelector('#target.popup-content').innerHTML = body; })
-                    .catch( document.querySelector('#target.popup-content').innerHTML = "Fail to get stuff" );
+                    .then(function(body) { document.querySelector('#target .popup-content').innerHTML = body; })
+                    .catch( document.querySelector('#target .popup-content').innerHTML = "Fail to get stuff" );
                 });
 
                 buttonHitboxes[i].addEventListener('mouseenter', function() {
