@@ -8,112 +8,88 @@
     <meta name="description" content="Anime UI — A-Frame">
     <script src="node_modules/aframe/dist/aframe.min.js"></script>
     <script src="node_modules/aframe-event-set-component/dist/aframe-event-set-component.js"></script>
-    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
+    <!-- <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script> -->
     <script src="node_modules/aframe-draw-component/dist/aframe-draw-component.min.js"></script>
     <script src="node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
     <script src="node_modules/aframe-text-component/dist/aframe-text-component.min.js"></script>
     <script src="node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
+    <script src="node_modules/whatwg-fetch/fetch.js"></script>
     <style type="text/css">
-    #target {
-      width: 1100px;
-      height: 250px;
-      position: absolute;
-      background: rgba(255,255,255,0.8);
-    }
-    #htmlTarget.hide {
-      z-index: -1;
-    }
-    #target h1 {
-      font-family: Arial;
-      font-size: 110px;
-      margin: 0;
-      vertical-align: top;
-      color: white;
-    }
-    #target h1 span {
-      color: tomato;
-    }
+        #target {
+            width: 500px;
+            height: 230px;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            border: 1px solid #a0a0a0;
+            font-family: sans-serif;
+            font-size: 18px;
+        }
 
-    #target img {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-    #emoji {
-      position: absolute;
-      font-size: 512px;
-      color: mediumTurquoise;
-      font-style: serif;
-    }
-    #pre {
-      font-family: monospace;
-      margin: 0;
-      padding: 0;
-      height: 50px;
-      font-size: 50px;
-      background: royalblue;
-      color: tomato;
-    }
-    #htmlTarget {
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-    #debug {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    @media (max-width: 512px) {
-      #target {
-        width: 500px;
-        height: 126px;
-      }
-      #target h1 {
-        font-size: 55px;
-      }
-      #pre {
-        height: 50px;
-        font-size: 25px;
-      }
-      #emoji {
-        position: absolute;
-        font-size: 256px;
-        color: mediumTurquoise;
-      }
-    }
-    body[data-vr="true"] .novr{
-      display: none;
-    }
+        #htmlTarget.hide {
+            z-index: -1;
+        }
 
+        #target img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+        }
 
-    .ee-desc { background: #fff; padding: 50px 28px; margin-bottom: 11px; }
-.ee-desc i { font-style: normal; color: #00adff; }
-.ee-desc span { display: inline-block; color: #00adff; }
-.ee-desc p { margin-bottom: 0; }
-.ee-desc strong { font-size: 43px; font-weight: 300; color: #000; line-height: 1.23255814; position: relative; display: inline-block; padding: 4px 0; width: 77%; position: relative; }
-.ee-desc strong:before, .ee-desc strong:after { content: ''; height: 1px; width: 13px; background: #000; position: absolute; left: 0; }
-.ee-desc strong:before { top: 0; }
-.ee-desc strong:after { bottom: 0; }
+        #htmlTarget {
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #debug {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #ensemble-logo {
+          position: absolute;
+          height: 120px;
+          z-index: 999;
+          left: 0;
+          top: 0;
+        }
+
+        .popup-content {
+          padding: 30px;
+          max-width: 100%;
+        }
+
+        .popup-topbar {
+          height: 30px;
+          width: 100%;
+          background-color: rgba(255,255,255,0.1);
+          border-bottom: 1px solid #a0a0a0;
+        }
     </style>
 </head>
 
 <body>
-  <div id="htmlTarget" class="hide">
-    <div id="target" class="ee-desc">
-      <p><strong>For another, it’s a <span><i id="prod-increase" class="anim-increase" data-start="0" data-end="33">33%</i></span> increase in resource productivity…<br> … that delivered an additional <span><i id="dollar-profit" class="anim-increase" data-start="0" data-end="100">$100</i> million</span> profit</strong></p>
-      <img src="./kabum.png">
-      <!-- <img src="assets/details/dash.png"> -->
-    </div>
-    <!-- <div id="emoji">〠</div>
+    <img id="ensemble-logo" src="./kabum.png">
+    <div id="htmlTarget" class="hide">
+        <div id="target" class="ee-desc">
+          <div class="popup-topbar"></div>
+          <div class="popup-content">
+            Uma pá de bico cresce os zói quando eu chego, zé polvinho é foda (hooou), não é não nego? Eu tô de mal com o mundo, terça feira à tarde, já fumei um ligeiro com os covarde, eu só confio em mim e mais ninguém, cê me entende?
+          </div>
+            <!-- <img src="./kabum.png"> -->
+            <!-- <img src="assets/details/dash.png"> -->
+        </div>
+        <!-- <div id="emoji">〠</div>
     <div id="target">
       <h1>HELLO<span>★</span></h1>
       <span id="pre">A</span>
     </div> -->
-  </div>
+    </div>
     <a-scene>
         <a-assets>
             <img id="panel-dash" src="assets/details/dash.png">
@@ -170,123 +146,122 @@
 
         </a-assets>
 
-        <a-camera position="0 0 0">
+        <a-camera position="0 0 0" mouse-cursor>
             <!-- <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor> -->
-            <a-entity cursor="fuse: true; timeout: 600" position="0 0 -1" geometry="primitive: ring; radius-inner: 0.03; radius-outer: 0.04;" material="color: red; shader: flat;">
-                <!-- <a-animation begin="click" easing="linear" attribute="scale"
-                       fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation> -->
-                <a-animation begin="fusing" easing="linear" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="linear" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-            </a-entity>
+            <!-- <a-entity cursor="fuse: true; timeout: 600" position="0 0 -1" geometry="primitive: ring; radius-inner: 0.03; radius-outer: 0.04;" material="color: red; shader: flat;"> -->
+            <!-- <a-animation begin="fusing" easing="linear" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation> -->
+            <!-- <a-animation begin="cursor-fusing" easing="linear" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation> -->
+            <!-- </a-entity> -->
         </a-camera>
 
         <!-- <a-entity style="font-size: 500px !important" id="plane-content" geometry="primitive:plane;width:5;height:10;" material="shader:html;target:.ee-desc;transparent:false;ratio: width;fps:0.3;side:double;" position="0 4 -3.5" rotation="5 0 0"></a-entity> -->
-        <!-- <a-box id="theContent" color="#007aff" position="0 3 -3" depth="0.1" height="3" width="5" draw="background: #e0e0e0" textwrap="textAlign: center; x: 128; y: 128; text: Hallow"></a-box> -->
-        <a-entity id="lettersEntity" geometry="primitive:plane;width:10;height:5;" rotation="0 0 0" position="-0.2 3 -3" material="shader:html;target:#target;transparent:true;ratio:width;fps:1.5;"></a-entity>
+        <!-- <a-box id="theContent" color="#007aff" position="0 3 -3" depth="0.1" height="3"  draw="background: #e0e0e0" textwrap="textAlign: center; x: 128; y: 128; text: Hallow"></a-box> -->
+        <a-entity id="lettersEntity" geometry="primitive:plane;width:2.8;height:1;" rotation="0 0 0" position="0 0.7 -3" material="shader:html;target:#target;transparent:true;ratio:width;fps:1.5;"></a-entity>
 
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#panel-dash" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+        <a-entity position="0 -3.5 4">
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#panel-dash" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="true"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-2-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+
+          <a-entity position="0 0 0">
+              <a-curvedimage src="#on-1-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+          </a-entity>
+          <!-- First row  -->
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-1-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-1-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-1-1" class="button-hitbox" color="#007aff" height="0.7" width="1.85" position="-2.81 1.35 -9.3" rotation="4 20 17" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-2-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-2-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-2-1" class="button-hitbox" color="#007aff" height="0.7" width="1.9" position="-1 1.7 -9.8" rotation="4 10 7" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-1-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-1-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-1-1" class="button-hitbox" color="#007aff" height="0.7" width="1.9" position="1 1.7 -9.8" rotation="4 -10 -7" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-2-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-2-1" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-2-1" class="button-hitbox" color="#007aff" height="0.7" width="1.85" position="2.81 1.35 -9.3" rotation="4 -20 -17" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <!-- Second row  -->
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-1-2" class="button-hitbox" color="#007aff" height="0.7" width="1.7" position="-2.6 0.61 -9.3" rotation="4 20 16" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-2-2" class="button-hitbox" color="#007aff" height="0.69" width="1.6" position="-0.85 1.12 -9.3" rotation="4 10 6" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-1-2" class="button-hitbox" color="#007aff" height="0.69" width="1.6" position="0.85 1.12 -9.3" rotation="4 -10 -6" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-2-2" class="button-hitbox" color="#007aff" height="0.7" width="1.7" position="2.6 0.61 -9.3" rotation="4 -20 -16" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <!-- Third row  -->
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-1-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-1-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-1-3" class="button-hitbox" color="#007aff" height="0.69" width="1.51" position="-2.4 -0.1 -9.3" rotation="4 20 16" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-1-2-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-1-2-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="1-2-3" class="button-hitbox" color="#007aff" height="0.67" width="1.5" position="-0.75 0.41 -9.3" rotation="4 10 4" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-1-2" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-1-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-1-3" class="button-hitbox" color="#007aff" height="0.67" width="1.5" position="0.75 0.41 -9.3" rotation="4 -10 -4" opacity="0" transparent="true"></a-plane>
+          </a-entity>
+
+          <a-entity position="0 0 0" toggleable>
+              <a-curvedimage src="#hover-2-2-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-curvedimage src="#clickdown-2-2-3" height="7"  radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
+              <a-plane data-loc="2-2-3" class="button-hitbox" color="#007aff" height="0.69" width="1.51" position="2.4 -0.1 -9.3" rotation="4 -20 -16" opacity="0" transparent="true"></a-plane>
+          </a-entity>
         </a-entity>
 
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-2-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-        <a-entity position="0 -1 7">
-            <a-curvedimage src="#on-1-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-        </a-entity>
-
-
-        <!-- First row  -->
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-1-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-1-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-1-1" class="button-hitbox" color="#007aff" height="0.6" width="1.8" position="-2.8 0.9 -9.3" rotation="4 20 13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-2-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-2-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-2-1" class="button-hitbox" color="#007aff" height="0.6" width="1.9" position="-1 1.2 -9.8" rotation="4 10 5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-1-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-1-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-1-1" class="button-hitbox" color="#007aff" height="0.6" width="1.9" position="1 1.2 -9.8" rotation="4 -10 -5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-2-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-2-1" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-2-1" class="button-hitbox" color="#007aff" height="0.6" width="1.8" position="2.8 0.9 -9.3" rotation="4 -20 -13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <!-- Second row  -->
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-1-2" class="button-hitbox" color="#007aff" height="0.5" width="1.5" position="-2.45 0.4 -9.3" rotation="4 20 13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-2-2" class="button-hitbox" color="#007aff" height="0.5" width="1.4" position="-0.75 0.7 -9.3" rotation="4 10 5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-1-2" class="button-hitbox" color="#007aff" height="0.5" width="1.4" position="0.75 0.7 -9.3" rotation="4 -10 -5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-2-2" class="button-hitbox" color="#007aff" height="0.5" width="1.5" position="02.45 0.4 -9.3" rotation="4 -20 -13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <!-- Third row  -->
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-1-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-1-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-1-3" class="button-hitbox" color="#007aff" height="0.5" width="1.4" position="-2.25 -0.1 -9.3" rotation="4 20 13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-1-2-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-1-2-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="1-2-3" class="button-hitbox" color="#007aff" height="0.45" width="1.3" position="-0.65 0.25 -9.3" rotation="4 10 5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-1-2" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-1-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-1-3" class="button-hitbox" color="#007aff" height="0.45" width="1.3" position="0.65 0.25 -9.3" rotation="4 -10 -5" opacity="0" transparent="true"></a-plane>
-        </a-entity>
-
-        <a-entity position="0 -1 7" toggleable>
-            <a-curvedimage src="#hover-2-2-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-curvedimage src="#clickdown-2-2-3" height="5" width="40" radius="10" theta-length="100" rotation="0 130 0" visible="false"></a-curvedimage>
-            <a-plane data-loc="2-2-3" class="button-hitbox" color="#007aff" height="0.5" width="1.4" position="2.25 -0.1 -9.3" rotation="4 -20 -13" opacity="0" transparent="true"></a-plane>
-        </a-entity>
         <!-- Left wall  -->
         <!-- <a-plane
       color="#aaffee"
@@ -319,8 +294,9 @@
       rotation="60 0 0"
       ></a-plane> -->
 
-        <a-sky color="#e0e0e0"></a-sky>
+        <a-sky color="#222222"></a-sky>
     </a-scene>
+    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
     <script type="text/javascript">
         (function() {
             function generateTextWrapAttribute(string) {
@@ -332,7 +308,7 @@
             var buttonHitboxes = document.querySelectorAll('[toggleable] .button-hitbox');
             for (var i = 0; i < buttonHitboxes.length; i++) {
                 buttonHitboxes[i].addEventListener('click', function() {
-                    document.querySelector('#theContent').setAttribute('textwrap', generateTextWrapAttribute(this.dataset.loc));
+                    // document.querySelector('#theContent').setAttribute('textwrap', generateTextWrapAttribute(this.dataset.loc));
                     if (selectedButton !== undefined) {
                         document.querySelector('[src="#on-' + selectedButton.slice(0, -4) + '"]').setAttribute('visible', 'false'); // Hide active group
                         document.querySelector('[src="#on-' + selectedButton.slice(0, -2) + '"]').setAttribute('visible', 'false'); // Hide active sub-group
@@ -344,6 +320,11 @@
                     this.previousElementSibling.setAttribute('visible', 'true'); // Set clickdown on
                     this.previousElementSibling.previousElementSibling.setAttribute('visible', 'false'); // Set hover state off
                     selectedButton = this.dataset.loc; // Store the new selected button string on mem
+
+                    fetch('https://ensemble-technology.github.io/spaceship/lala/txts/' + this.dataset.loc + '.txt')
+                    .then(function(response) { return response.text(); })
+                    .then(function(body) { document.querySelector('#target.popup-content').innerHTML = body; })
+                    .catch( document.querySelector('#target.popup-content').innerHTML = "Fail to get stuff" );
                 });
 
                 buttonHitboxes[i].addEventListener('mouseenter', function() {
