@@ -1,0 +1,160 @@
+{
+  "1-1-1": {
+    "questions": [
+      "Who’s in charge? Under what authority?",
+      "How do policies get set, implemented and changed?"
+    ],
+    "subservices": [
+      "Communication content, participation & cadence",
+      "Change control: scope, cost & schedule)",
+      "Risk & issue management",
+      "Planning & scheduling standards",
+      "Resource management standards",
+      "Performance standards",
+      "Target operating model"
+    ]
+  },
+  "1-1-2": {
+    "questions": [
+      "How does the project fit into the bigger picture?",
+      "Why do it at all? What’s in and what’s out?"
+    ],
+    "subservices": [
+      "Business case (TOEI analysis)",
+      "Strategy development (Thinking Process)",
+      "Requirements development"
+    ]
+  },
+  "1-1-3": {
+    "questions": [
+      "How do you control files, code and other project artefacts?",
+      "What technology will help you plan and perform the work?"
+    ],
+    "subservices": [
+      "Document repository",
+      "Code repository",
+      "Work management technology",
+      "ICT infrastructure"
+    ]
+  },
+  "1-2-1": {
+    "questions": [
+      "How will you inspire your teams to learn together?",
+      "How will new ways of working be accepted in your culture?"
+    ],
+    "subservices": [
+      "Culture diagnostic",
+      "OCM approach",
+      "Capability transfer"
+    ]
+  },
+  "1-2-2": {
+    "questions": [
+      "How can you objectively assess team performance?",
+      "How do high-performance teams think, feel and act?"
+    ],
+    "subservices": [
+      "Organisational benchmarking",
+      "Individual assessment",
+      "Recruitment & outplacement"
+    ]
+  },
+  "1-2-3": {
+    "questions": [
+      "From CEO to frontline, who carries the can?",
+      "How do you give people ownership, yet keep control?"
+    ],
+    "subservices": [
+      "Levels of work",
+      "Task assigning role relationships",
+      "Task initiating role relationships",
+      "Assigning work (CPORT)"
+    ]
+  },
+  "2-1-1": {
+    "questions": [
+      "How do you decide who works on what? By when?",
+      "How do you define and control the development of processes?"
+    ],
+    "subservices": [
+      "The importance of the CPORT",
+      "The process of planning & scheduling",
+      "The overall flight-plan",
+      "Work-streams & functional accountability",
+      "Major milestones & integration",
+      "Scheduling standards",
+      "Finite schedules & the 90-day look-ahead"
+    ]
+  },
+  "2-1-2": {
+    "questions": [
+      "What capabilities do you need in your project pool?",
+      "How will people come on and off the project? At what cost?"
+    ],
+    "subservices": [
+      "Defining a resource taxonomy",
+      "Work, positions, assignments & budgets",
+      "Schedule density",
+      "Resource mobilisation & demobilisation",
+      "The power of aggregation",
+      "Identifying constraints",
+      "Resolving resource contention"
+    ]
+  },
+  "2-1-3": {
+    "questions": [
+      "Scope, cost, schedule? How do you decide the best trade-offs?",
+      "Which scenarios are most relevant to the business needs?"
+    ],
+    "subservices": [
+      "The value of a day",
+      "What’s reasonable and possible",
+      "Risk weighting",
+      "Burn rates & total burn",
+      "Total costs",
+      "Opportunity cost & revenue",
+      "The effect of changing scope"
+    ]
+  },
+  "2-2-1": {
+    "questions": [
+      "How do you keep everyone in sync?",
+      "What are your meeting rituals? Who attends? When, and why?"
+    ],
+    "subservices": [
+      "The importance of communication",
+      "The cadence of meetings",
+      "Rules of engagement",
+      "Flow time",
+      "Learning from success and failure"
+    ]
+  },
+  "2-2-2": {
+    "questions": [
+      "How do you instrument and control the creation of value?",
+      "How do you use data to improve performance?"
+    ],
+    "subservices": [
+      "Throughput (T)",
+      "Operating Expense (OE)",
+      "Investment (I)",
+      "Lead time",
+      "Due-date performance",
+      "Quality",
+      "Staff engagement",
+      "Customer satisfaction"
+    ]
+  },
+  "2-2-3": {
+    "questions": [
+      "How do you map completed work to required outcomes?",
+      "How do you manage changes to the baseline plan?"
+    ],
+    "subservices": [
+      "Requirements traceability",
+      "Deliverables repository & control",
+      "Change control",
+      "Signoff processes"
+    ]
+  }
+}
