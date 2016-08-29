@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spaceship</title>
+    <script src="jquery-3.1.0.min.js" type="text/javascript"></script>
+    <style media="screen">
+      .spaceship-closed-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .spaceship-container,
+      .spaceship-closed-container {
+        position: relative;
+        width: 300px;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      .spaceship-container img,
+      .spaceship-closed-container img {
+        display: inline-block;
+        margin: 0;
+        width: 100%;
+      }
+      .spaceship-container img:nth-child(2),
+      .spaceship-closed-container img:nth-child(2) {
+        margin-top: -10px;
+        margin-bottom: -20px;
+      }
+
+      #hud {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        display: none;
+      }
+
+      .spc-si-item {
+        background-color: rgba(255, 0, 0, 0.8);
+      }
+
+      #spc-si-strategy {
+        position: absolute;
+
+        height: 10%;
+        width: 30%;
+
+        bottom: 26%;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+
+      #spc-si-idea {
+        position: absolute;
+
+        height: 6%;
+        width: 30%;
+
+        bottom: 19%;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spaceship-container">
+      <img src="src/img/top-open.png" alt=""/>
+      <img src="src/img/middle-open.png" alt=""/>
+      <img src="src/img/bottom-open.png" alt=""/>
+
+      <div id="spc-si-innovation" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-technology" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-people" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-process" class="spc-si-item" data-spacepart="top"></div>
+
+      <div id="spc-si-culture" class="spc-si-item" data-spacepart="middle"></div>
+      <div id="spc-si-language" class="spc-si-item" data-spacepart="middle"></div>
+      <div id="spc-si-organisation" class="spc-si-item" data-spacepart="middle"></div>
+      <div id="spc-si-resources" class="spc-si-item" data-spacepart="middle"></div>
+
+      <div id="spc-si-strategy" class="spc-si-item" data-spacepart="bottom"></div>
+      <div id="spc-si-idea" class="spc-si-item" data-spacepart="bottom"></div>
+    </div>
+
+    <div id="hud">
+
+    </div>
+
+    <!-- <div class="spaceship-closed-container">
+      <img src="src/img/Top-Closed.png" alt="" />
+      <img src="src/img/Middle-Closed.png" alt="" />
+      <img src="src/img/Bottom-Closed.png" alt="" />
+    </div> -->
+
+    <script type="text/javascript">
+      $(function() {
+        $('.spaceship-container img').click(function(e) {
+            var el = $(this);
+            var elSrc = el.attr('src');
+            if (elSrc.includes('-open')) {
+              var newSrc = elSrc.replace('-open', '-closed')
+              el.attr('src', newSrc);
+            } else if (elSrc.includes('-closed')) {
+              var newSrc = elSrc.replace('-closed', '-open');
+              el.attr('src', newSrc);
+            }
+        });
+
+        $('.spaceship-container img').hover(function(e) {
+              if ($(this).attr('src').includes('-closed')) {
+                var hud = $('#hud');
+                var top = $(this).position().top;
+                var left = $(this).position().left + 300 + 20;
+
+                hud.css({
+                  display: 'inline-block',
+                  top: top,
+                  left: left
+                });
+              }
+            }, function(e) {
+              var hud = $('#hud');
+              hud.css({
+                display: 'none'
+              });
+            });
+
+        $('.spc-si-item').hover(function(e) {
+              var hud = $('#hud');
+
+              var spaceparts = ['top', 'middle', 'bottom'];
+              var spacepartArrPos = spaceparts.indexOf($(this).data('spacepart'));
+              var spacepart = $($('.spaceship-container img')[spacepartArrPos]);
+              var top = spacepart.position().top;
+              var left = spacepart.position().left + 300 + 20;
+
+              hud.css({
+                display: 'inline-block',
+                top: top,
+                left: left
+              });
+            }, function(e) {
+              var hud = $('#hud');
+              hud.css({
+                display: 'none'
+              });
+            });
+      });
+    </script>
+  </body>
+</html>
