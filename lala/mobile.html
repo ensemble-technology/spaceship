@@ -12,7 +12,6 @@
     <script src="node_modules/aframe-textwrap-component/dist/aframe-textwrap-component.min.js"></script>
     <script src="node_modules/aframe-text-component/dist/aframe-text-component.min.js"></script>
     <script src="node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
-    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="node_modules/whatwg-fetch/fetch.js"></script>
     <style type="text/css">
         #target {
@@ -136,16 +135,9 @@
 
     <div id="htmlTarget" class="hide">
         <div id="target" class="ee-desc">
-            <!-- <div class="popup-title-topbar"></div> -->
-            <div class="popup-questions-content g-popup">
-                <!-- Comé que é rapa calora do ca**i -->
-            </div>
-            <!-- <div class="popup-topbar"></div> -->
-            <div class="popup-subservices-content g-popup">
-                <!-- Uma pá de bico cresce os zói quando eu chego, zé polvinho é foda (hooou), não é não nego? Eu tô de mal com o mundo, terça feira à tarde, já fumei um ligeiro com os covarde, eu só confio em mim e mais ninguém, cê me entende? -->
-            </div>
-            <!-- <img src="./kabum.png"> -->
-            <!-- <img src="assets/details/dash.png"> -->
+            <div class="popup-questions-content g-popup"></div>
+            <div class="popup-subservices-content g-popup"></div>
+            <!-- <img src="./svg.svg"> -->
         </div>
         <!-- <div id="emoji">〠</div>
     <div id="target">
@@ -157,7 +149,8 @@
         <a-assets>
             <!-- BG  -->
             <!-- <img id="sky" src="stars_bg.jpg"> -->
-            <img id="sky" src="stars_bg2.png">
+            <!-- <img id="sky" src="stars_bg2.png"> -->
+            <img id="sky" src="space.jpg">
 
             <!-- Panel stuff -->
             <img id="panel-dash" src="assets/details/dash.png">
@@ -215,14 +208,13 @@
         </a-assets>
 
         <a-entity position="0 0 1" rotation="0 0 0">
-            <a-camera position="0 0 0" rotation="0 0 0" look-controls mouse-cursor>
-                <!-- <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor> -->
-                <!-- <a-entity cursor="fuse: true; timeout: 600" position="0 0 -1" geometry="primitive: ring; radius-inner: 0.03; radius-outer: 0.04;" material="color: red; shader: flat;"> -->
-                <!-- <a-animation begin="fusing" easing="linear" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation> -->
-                <!-- <a-animation begin="cursor-fusing" easing="linear" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation> -->
-                <!-- </a-entity> -->
-            </a-camera>
-            <!-- <a-animation attribute="rotation" fill="forwards" from="0 0 0" to="0 100 0" dur="6000" begin="2000"></a-animation> -->
+          <a-camera position="0 0 0">
+          <!-- <a-cursor color="#4CC3D9" fuse="true" timeout="600"></a-cursor> -->
+            <a-entity cursor="fuse: true; timeout: 600; maxDistance: 10;" position="0 0 -1" geometry="primitive: ring; radius-inner: 0.03; radius-outer: 0.04;" material="color: red; shader: flat;">
+              <a-animation begin="fusing" easing="linear" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+              <a-animation begin="cursor-fusing" easing="linear" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+            </a-entity>
+          </a-camera>
         </a-entity>
 
         <!-- Initial text  -->
