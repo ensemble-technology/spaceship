@@ -230,17 +230,13 @@
 
     </div>
 
-    <!-- <div class="spaceship-closed-container">
-      <img src="src/img/Top-Closed.png" alt="" />
-      <img src="src/img/Middle-Closed.png" alt="" />
-      <img src="src/img/Bottom-Closed.png" alt="" />
-    </div> -->
-
     <script type="text/javascript">
       $(function() {
         $('.spaceship-container img').click(function(e) {
             var el = $(this);
             var elSrc = el.attr('src');
+
+            // if image have -open in its src, toggle to -closed and vice versa
             if (elSrc.includes('-open')) {
               var newSrc = elSrc.replace('-open', '-closed')
               el.attr('src', newSrc);
@@ -259,6 +255,9 @@
         });
 
         $('.spaceship-container img').hover(function(e) {
+          // mouseenter function
+
+              // show hud and set its position
               if ($(this).attr('src').includes('-closed')) {
                 var hud = $('#hud');
                 var top = $(this).position().top;
@@ -271,6 +270,8 @@
                 });
               }
             }, function(e) {
+        // mouseleave function
+              // hide hud
               var hud = $('#hud');
               hud.css({
                 display: 'none'
@@ -278,20 +279,26 @@
             });
 
         $('.spc-si-item').hover(function(e) {
+          // mouseenter inside sub item function
               var hud = $('#hud');
 
+              // get parent img position and set the hud position based on its x, y
               var spaceparts = ['top', 'middle', 'bottom'];
               var spacepartArrPos = spaceparts.indexOf($(this).data('spacepart'));
               var spacepart = $($('.spaceship-container img')[spacepartArrPos]);
-              var top = spacepart.position().top;
+              var top = spacepart.position().top + 1 * $('.spaceship-container').css('margin-top').split('px')[0];
               var left = spacepart.position().left + 300 + 20;
 
+              console.log(top);
+
               hud.css({
-                display: 'inline-block',
+                display: 'block',
                 top: top,
                 left: left
               });
             }, function(e) {
+          // mouseleave sub item
+              // hide hud
               var hud = $('#hud');
               hud.css({
                 display: 'none'
@@ -299,6 +306,8 @@
             });
 
         $('.spc-si-item').click(function(e) {
+          // toggle spaceship section state then sub item is clicked
+              e.preventDefault();
               $('[data-spacesec="' + $(e.target).data('spacepart') + '"]').click();
             });
       });
