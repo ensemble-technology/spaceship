@@ -33,11 +33,22 @@
       }
 
       #hud {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.8);
         width: 400px;
-        height: 200px;
-        position: absolute;
+        padding: 0 15px;
+        position: fixed;
         display: none;
+
+        color: #fff;
+      }
+
+      #hud-title {
+        /*font-size: 16px;*/
+      }
+
+      #hud-body {
+        /*font-size: 14px;*/
+        font-family: sans-serif;
       }
 
       .spc-si-item {
@@ -201,33 +212,35 @@
         right: 0;
         margin: 0 auto;
       }
+
     </style>
   </head>
   <body>
     <div class="spaceship-container">
-      <img src="src/img/top-open.png" data-spacesec="top"/>
-      <img src="src/img/middle-open.png" data-spacesec="middle"/>
-      <img src="src/img/bottom-open.png" data-spacesec="bottom"/>
+      <img src="src/img/top-open.png" data-spacesec="top" data-title="Deliver" data-body="Some cool text"/>
+      <img src="src/img/middle-open.png" data-spacesec="middle" data-title="Design" data-body="Dats acoul tekst"/>
+      <img src="src/img/bottom-open.png" data-spacesec="bottom" data-title="Explore" data-body="Dats a cool lorem ipsum"/>
 
-      <div id="spc-si-innovation" class="spc-si-item" data-spacepart="top"></div>
-      <div id="spc-si-innovation2" class="spc-si-item" data-spacepart="top"></div>
-      <div id="spc-si-technology" class="spc-si-item" data-spacepart="top"></div>
-      <div id="spc-si-technology2" class="spc-si-item" data-spacepart="top"></div>
-      <div id="spc-si-people" class="spc-si-item" data-spacepart="top"></div>
-      <div id="spc-si-process" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-innovation" class="spc-si-item" data-spacepart="top" data-title="Win results" data-body="Your idea only becomes an innovation when starts creating value. At that point, you unleash new power to boost your organisation’s throughput."></div>
+      <div id="spc-si-innovation2" class="spc-si-item" data-spacepart="top" data-title="Win results" data-body="Your idea only becomes an innovation when starts creating value. At that point, you unleash new power to boost your organisation’s throughput."></div>
+      <div id="spc-si-technology" class="spc-si-item" data-spacepart="top" data-title="Profoundly transform with technology" data-body="When you leverage technology for the value-creating parts of your organisation, you reap the rewards of the digital age."></div>
+      <div id="spc-si-technology2" class="spc-si-item" data-spacepart="top" data-title="Profoundly transform with technology" data-body="When you leverage technology for the value-creating parts of your organisation, you reap the rewards of the digital age."></div>
+      <div id="spc-si-people" class="spc-si-item" data-spacepart="top" data-title="Develop the amazing in people" data-body="When you empower people to increase the rate at which they perform only value-adding work, you build their sense of autonomy, mastery and purpose."></div>
+      <div id="spc-si-process" class="spc-si-item" data-spacepart="top" data-title="Engineer seamless processes" data-body="What can you standardise and repeat? Who does it? When? With what aim? Asking these questions reliably is half of the answer—we help close the circle."></div>
 
-      <div id="spc-si-culture" class="spc-si-item" data-spacepart="middle"></div>
-      <div id="spc-si-language" class="spc-si-item" data-spacepart="middle"></div>
-      <div id="spc-si-organisation" class="spc-si-item" data-spacepart="middle"></div>
-      <div id="spc-si-resources" class="spc-si-item" data-spacepart="middle"></div>
-      <div id="spc-si-operations" class="spc-si-item" data-spacepart="middle"></div>
+      <div id="spc-si-culture" class="spc-si-item" data-spacepart="middle" data-title="Cultivate a winning culture" data-body="When you understand, codify and develop the shared assumptions and behaviours of your team, your people will learn to adapt to the external world and to work together energetically towards a common goal."></div>
+      <div id="spc-si-language" class="spc-si-item" data-spacepart="middle" data-title="Engage purposeful language" data-body="People are meaning-making machines, basing action on verbal, written, visual, aural and bodily cues. How you communicate plans and expectations makes all the difference in the world."></div>
+      <div id="spc-si-organisation" class="spc-si-item" data-spacepart="middle" data-title="Cleave to a requisite organisation" data-body="When you establish accountability and expectations at each level of work, your people can take ownership of their roles, with inspiring results for the whole team."></div>
+      <div id="spc-si-resources" class="spc-si-item" data-spacepart="middle" data-title="Mindfully manage resources" data-body="How will you turn intention into reality, every time—on time and on budget? Here we define the human, material, information and financial resources required to do the work."></div>
+      <div id="spc-si-operations" class="spc-si-item" data-spacepart="middle" data-title="Design systemic operations" data-body="We apply the Theory of Constraints to the way you work with your resources in and across time and space to achieve your organisational goal."></div>
 
-      <div id="spc-si-strategy" class="spc-si-item" data-spacepart="bottom"></div>
-      <div id="spc-si-idea" class="spc-si-item" data-spacepart="bottom"></div>
+      <div id="spc-si-strategy" class="spc-si-item" data-spacepart="bottom" data-title="Strategy for every domain" data-body="How will your idea flow through the engine that powers your organisation? Each domain is affected, whether or not you make intentional changes. Through strategic planning, you align your system in each area and exert positive influences that maximise your return."></div>
+      <div id="spc-si-idea" class="spc-si-item" data-spacepart="bottom" data-title="Turn your idea into innovation" data-body="Your goal is to create additional value and wealth by applying expertise and leverage to the core domains of your value-creation engine. Success starts with a good idea."></div>
     </div>
 
     <div id="hud">
-
+      <h3 id="hud-title"></h3>
+      <p id="hud-body"></p>
     </div>
 
     <script type="text/javascript">
@@ -254,56 +267,75 @@
             }
         });
 
-        $('.spaceship-container img').hover(function(e) {
-          // mouseenter function
+        $('.spaceship-container img').mouseenter(function(e) {
+          // show hud and set its position
+          if ($(this).attr('src').includes('-closed')) {
+            var hud = $('#hud');
+            $('#hud-title').text($(this).data('title'));
+            $('#hud-body').text($(this).data('body'));
 
-              // show hud and set its position
-              if ($(this).attr('src').includes('-closed')) {
-                var hud = $('#hud');
-                var top = $(this).position().top;
-                var left = $(this).position().left + 300 + 20;
+            hud.stop();
+            hud.clearQueue();
+            hud.fadeIn();
+          }
+        });
 
-                hud.css({
-                  display: 'inline-block',
-                  top: top,
-                  left: left
-                });
-              }
-            }, function(e) {
-        // mouseleave function
-              // hide hud
-              var hud = $('#hud');
-              hud.css({
-                display: 'none'
-              });
+        $('.spaceship-container img').mousemove(function(e) {
+          // show hud and set its position
+          if ($(this).attr('src').includes('-closed')) {
+            var hud = $('#hud');
+            var left = e.originalEvent.clientX + 20;
+            var top = e.originalEvent.clientY - hud.height();
+
+            if (hud.css('display') === 'none') {
+              hud.mouseenter(e);
+            }
+
+            hud.css({
+              top: top,
+              left: left
             });
+          }
+        });
 
-        $('.spc-si-item').hover(function(e) {
-          // mouseenter inside sub item function
-              var hud = $('#hud');
+        $('.spaceship-container img').mouseleave(function(e) {
+          // hide hud
+          var hud = $('#hud');
+          hud.stop();
+          hud.clearQueue();
+          hud.fadeOut();
+        });
 
-              // get parent img position and set the hud position based on its x, y
-              var spaceparts = ['top', 'middle', 'bottom'];
-              var spacepartArrPos = spaceparts.indexOf($(this).data('spacepart'));
-              var spacepart = $($('.spaceship-container img')[spacepartArrPos]);
-              var top = spacepart.position().top + 1 * $('.spaceship-container').css('margin-top').split('px')[0];
-              var left = spacepart.position().left + 300 + 20;
+        $('.spc-si-item').mouseenter(function(e) {
+          var hud = $('#hud');
+          $('#hud-title').text($(this).data('title'));
+          $('#hud-body').text($(this).data('body'));
 
-              console.log(top);
+          hud.stop();
+          hud.clearQueue();
+          hud.fadeIn();
+        });
 
-              hud.css({
-                display: 'block',
-                top: top,
-                left: left
-              });
-            }, function(e) {
-          // mouseleave sub item
-              // hide hud
-              var hud = $('#hud');
-              hud.css({
-                display: 'none'
-              });
-            });
+        $('.spc-si-item').mousemove(function(e) {
+          var hud = $('#hud');
+
+          // console.log(e.originalEvent);
+          var left = e.originalEvent.clientX + 20;
+          var top = e.originalEvent.clientY - hud.height() - 10;
+
+          hud.css({
+            top: top,
+            left: left
+          });
+        });
+
+        $('.spc-si-item').mouseleave(function(e) {
+          // hide hud
+          var hud = $('#hud');
+          hud.stop();
+          hud.clearQueue();
+          hud.fadeOut();
+        });
 
         $('.spc-si-item').click(function(e) {
           // toggle spaceship section state then sub item is clicked
