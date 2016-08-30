@@ -213,9 +213,11 @@
         margin: 0 auto;
       }
 
+      #imgpreloader { display: none; width: 0; height: 0;}
     </style>
   </head>
   <body>
+    <img id="imgpreloader" src="src/img/top-closed.png"></img>
     <div class="spaceship-container">
       <img src="src/img/top-open.png" data-spacesec="top" data-title="Deliver" data-body="Some cool text"/>
       <img src="src/img/middle-open.png" data-spacesec="middle" data-title="Design" data-body="Dats acoul tekst"/>
@@ -245,6 +247,11 @@
 
     <script type="text/javascript">
       $(function() {
+        $('#imgpreloader').attr('src', 'src/img/top-closed.png');
+        $('#imgpreloader').attr('src', 'src/img/middle-closed.png');
+        $('#imgpreloader').attr('src', 'src/img/bottom-closed.png');
+        $('#imgpreloader').remove();
+
         $('.spaceship-container img').click(function(e) {
             var el = $(this);
             var elSrc = el.attr('src');
