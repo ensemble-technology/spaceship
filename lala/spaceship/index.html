@@ -44,6 +44,138 @@
         background-color: rgba(255, 0, 0, 0.8);
       }
 
+      #spc-si-innovation {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        top: 3%;
+
+        width: 15%;
+        height: 5%;
+      }
+
+      #spc-si-innovation2 {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        top: 8%;
+
+        width: 30%;
+        height: 5%;
+      }
+
+      #spc-si-technology {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        top: 14%;
+
+        width: 35%;
+        height: 5%;
+      }
+
+      #spc-si-technology2 {
+        /*background-color: rgba(0, 255, 0, 0.5);*/
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        top: 19%;
+
+        width: 25%;
+        height: 2%;
+      }
+
+      #spc-si-people {
+        position: absolute;
+
+        height: 13%;
+        width: 25%;
+
+        top: 24%;
+
+        left: 20%;
+      }
+
+      #spc-si-process {
+        position: absolute;
+
+        height: 15%;
+        width: 25%;
+
+        top: 22%;
+
+        right: 20%;
+      }
+
+      #spc-si-culture {
+        position: absolute;
+
+        height: 18%;
+        width: 10%;
+
+        bottom: 40%;
+
+        right: 22%;
+      }
+
+      #spc-si-language {
+        position: absolute;
+
+        height: 19%;
+        width: 10%;
+
+        bottom: 40%;
+
+        right: 33%;
+      }
+
+      #spc-si-organisation {
+        position: absolute;
+
+        height: 19%;
+        width: 10%;
+
+        bottom: 40%;
+
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+
+      #spc-si-resources {
+        position: absolute;
+
+        height: 19%;
+        width: 10%;
+
+        bottom: 40%;
+
+        left: 33%;
+      }
+
+      #spc-si-operations {
+        position: absolute;
+
+        height: 18%;
+        width: 10%;
+
+        bottom: 40%;
+
+        left: 22%;
+      }
+
       #spc-si-strategy {
         position: absolute;
 
@@ -73,12 +205,14 @@
   </head>
   <body>
     <div class="spaceship-container">
-      <img src="src/img/top-open.png" alt=""/>
-      <img src="src/img/middle-open.png" alt=""/>
-      <img src="src/img/bottom-open.png" alt=""/>
+      <img src="src/img/top-open.png" data-spacesec="top"/>
+      <img src="src/img/middle-open.png" data-spacesec="middle"/>
+      <img src="src/img/bottom-open.png" data-spacesec="bottom"/>
 
       <div id="spc-si-innovation" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-innovation2" class="spc-si-item" data-spacepart="top"></div>
       <div id="spc-si-technology" class="spc-si-item" data-spacepart="top"></div>
+      <div id="spc-si-technology2" class="spc-si-item" data-spacepart="top"></div>
       <div id="spc-si-people" class="spc-si-item" data-spacepart="top"></div>
       <div id="spc-si-process" class="spc-si-item" data-spacepart="top"></div>
 
@@ -86,6 +220,7 @@
       <div id="spc-si-language" class="spc-si-item" data-spacepart="middle"></div>
       <div id="spc-si-organisation" class="spc-si-item" data-spacepart="middle"></div>
       <div id="spc-si-resources" class="spc-si-item" data-spacepart="middle"></div>
+      <div id="spc-si-operations" class="spc-si-item" data-spacepart="middle"></div>
 
       <div id="spc-si-strategy" class="spc-si-item" data-spacepart="bottom"></div>
       <div id="spc-si-idea" class="spc-si-item" data-spacepart="bottom"></div>
@@ -109,9 +244,17 @@
             if (elSrc.includes('-open')) {
               var newSrc = elSrc.replace('-open', '-closed')
               el.attr('src', newSrc);
+              var spacesec = el.data('spacesec');
+              $('.spc-si-item[data-spacepart="' + spacesec +'"]').css({
+                display: 'none'
+              });
             } else if (elSrc.includes('-closed')) {
               var newSrc = elSrc.replace('-closed', '-open');
               el.attr('src', newSrc);
+              var spacesec = el.data('spacesec');
+              $('.spc-si-item[data-spacepart="' + spacesec +'"]').css({
+                display: 'block'
+              });
             }
         });
 
@@ -153,6 +296,10 @@
               hud.css({
                 display: 'none'
               });
+            });
+
+        $('.spc-si-item').click(function(e) {
+              $('[data-spacesec="' + $(e.target).data('spacepart') + '"]').click();
             });
       });
     </script>
